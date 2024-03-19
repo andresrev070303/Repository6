@@ -28,4 +28,11 @@ describe("Jugar", () => {
     rollMany(17, 0);
     expect(juego.score()).toBe(16);
   });
+  it("deberia devolver el caso especial de 1 strike", () => {
+    juego.roll(10);
+    juego.roll(3);
+    juego.roll(4);
+    rollMany(16, 0);
+    expect(juego.score()).toBe(24);
+  });
 }); 
