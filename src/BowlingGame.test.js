@@ -1,11 +1,21 @@
 import Juego from "./BowlingGame.js";
 
 describe("Jugar", () => {
-  it("deberia devolver  la funcion juego", () => {
-    const juego = new Juego();
-    for (let i = 0; i < 20; i++) {
-      juego.roll(0);
+  let juego;
+  beforeEach(() => {
+    juego = new Juego();
+  });
+  const rollMany = (n, pins) => {
+    for (let i = 0; i < n; i++) {
+      juego.roll(pins);
     }
-    expect(juego.score()).toBe(0);
+  }
+  it("deberia devolver 0 de la funcion juego", () => {
+    rollMany(20, 0);
+    expect(juego.getScore()).toBe(0);
+  });
+  it("deberia devolver 20 de la funcion juego", () => {
+    rollMany(20, 1);
+    expect(juego.getScore()).toBe(20);
   });
 });
