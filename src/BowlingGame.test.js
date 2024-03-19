@@ -14,6 +14,9 @@ describe("Jugar", () => {
     juego.roll(5);
     juego.roll(5);
   }
+  const rollStrike = () => {
+    juego.roll(10);
+  }
   it("deberia devolver 0 de la funcion juego", () => {
     rollMany(20, 0);
     expect(juego.score()).toBe(0);
@@ -29,10 +32,14 @@ describe("Jugar", () => {
     expect(juego.score()).toBe(16);
   });
   it("deberia devolver el caso especial de 1 strike", () => {
-    juego.roll(10);
+    rollStrike();
     juego.roll(3);
     juego.roll(4);
     rollMany(16, 0);
     expect(juego.score()).toBe(24);
+  });
+  it("deberia devolver el caso especial de 1 juego perfecto", () => {
+    rollMany(12, 10);
+    expect(juego.score()).toBe(300);
   });
 }); 
